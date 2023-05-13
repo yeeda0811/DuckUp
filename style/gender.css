@@ -1,0 +1,123 @@
+@charset "UTF-8";
+* {
+  font-family: 微軟正黑體;
+}
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+nav {
+  position: sticky;
+  top: 0px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+  background-color: #f9b132;
+  z-index: 5;
+}
+nav .h2 {
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
+  color: #543927;
+  padding-left: 60px;
+}
+nav .year {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  padding-right: 60px;
+}
+nav .year a {
+  text-decoration: none;
+  color: #543927;
+  font-size: 24px;
+  font-weight: bold;
+  transition-duration: 0.5s;
+}
+nav .year a:hover {
+  color: white;
+}
+
+section {
+  display: flex;
+}
+
+.sidebar {
+  position: sticky;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 40px 200px 100px;
+  background-color: #0cc0df;
+  border-top-right-radius: 40px;
+}
+.sidebar h3 {
+  font-size: 36px;
+  color: white;
+}
+.sidebar .bar {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .bar a {
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  border-bottom: solid 2px white;
+  padding: 20px 40px 10px 0px;
+  transition-duration: 0.5s;
+}
+.sidebar .bar a:hover {
+  color: #543927;
+}
+
+.diagram {
+  display: flex;
+  flex-direction: column;
+  padding-left: 150px;
+}
+.diagram .title {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 60px;
+       column-gap: 60px;
+}
+.diagram .title h1 {
+  font-size: 42px;
+  color: #543927;
+}
+.diagram .title .tab {
+  display: flex;
+}
+.diagram .title .tab a {
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 40px;
+}
+.diagram .title .tab .dog {
+  background-color: #f9b132;
+  color: white;
+  padding-right: 30px;
+  z-index: 2;
+  transition-duration: 0.5s;
+}
+.diagram .title .tab .cat {
+  color: #0cc0df;
+  background-color: #e7f2f1;
+  padding-left: 60px;
+  margin-left: -45px;
+  transition-duration: 0.5s;
+}
+.diagram .title .tab .cat:hover {
+  background-color: #0cc0df;
+  color: white;
+}/*# sourceMappingURL=gender.css.map */

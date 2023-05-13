@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>性別</title>
+    <link rel="stylesheet" href="../style/gender.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"
+      integrity="sha512-VdqgeoWrVJcsDXFlQEKqE5MyhaIgB9yXUVaiUa8DR2J4Lr1uWcFm+ZH/YnzV5WqgKf4GPyHQ64vVLgzqGIchyw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <nav>
+      <a href="" class="h2">DuckUp</a>
+      <div class="year">
+        <a href="">107年度</a><a href="">108年度</a><a href="">109年度</a
+        ><a href="">110年度</a><a href="">111年度</a>
+      </div>
+    </nav>
+
+    <section>
+      <div class="sidebar">
+        <h3>107年度</h3>
+        <div class="bar">
+          <a href="" style="padding-top: 0px">統計報表</a><a href="">尋獲地點</a
+          ><a href="">收容所地點</a><a href="#">性別</a><a href="">是否混種</a
+          ><a href="">是否健康</a>
+        </div>
+      </div>
+
+      <div class="diagram">
+        <div class="title">
+          <h1>性別</h1>
+          <div class="tab">
+            <a href="" class="dog">犬</a><a href="" class="cat">貓</a>
+          </div>
+        </div>
+        <div id="gender_d" style="width: 800px; height: 600px"></div>
+        <div id="gender_c" style="width: 800px; height: 600px"></div>
+      </div>
+    </section>
+
+    <script>
+      let dogChart = echarts.init(document.getElementById("gender_d"));
+
+      dogChart.setOption({
+        series: [
+          {
+            name: "",
+            type: "pie",
+            color: ["#f9b132", "#ffcf82"],
+            label: {
+              color: "#543927",
+              fontSize: 32,
+              fontWeight: "bold",
+              fontFamily: "微軟正黑體",
+            },
+            radius: "80%",
+            data: [
+              { value: 235, name: "公犬" },
+              { value: 274, name: "母犬" },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(249, 177, 50, 0.5)",
+              },
+            },
+          },
+        ],
+        tooltip: {
+          trigger: "item",
+          formatter: "{b} : {c} ({d}%)",
+          backgroundColor: "rgba(249, 177, 50, 0.5)",
+          textStyle: {
+            color: "white",
+            fontSize: 20,
+            fontWeight: "bold",
+            fontFamily: "微軟正黑體",
+          },
+        },
+      });
+
+      let catChart = echarts.init(document.getElementById("gender_c"));
+
+      catChart.setOption({
+        series: [
+          {
+            name: "",
+            type: "pie",
+            color: ["#0cc0df", "#e7f2f1"],
+            label: {
+              color: "#543927",
+              fontSize: 32,
+              fontWeight: "bold",
+              fontFamily: "微軟正黑體",
+            },
+            radius: "80%",
+            data: [
+              { value: 235, name: "公貓" },
+              { value: 274, name: "母貓" },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(12, 192, 223, 0.5)",
+              },
+            },
+          },
+        ],
+        tooltip: {
+          trigger: "item",
+          formatter: "{b} : {c} ({d}%)",
+          backgroundColor: "rgba(12, 192, 223, 0.5)",
+          textStyle: {
+            color: "white",
+            fontSize: 20,
+            fontWeight: "bold",
+            fontFamily: "微軟正黑體",
+          },
+        },
+      });
+    </script>
+    <!-- <script src="./gender_CatChart.js" type="text/javascript"></script> -->
+  </body>
+</html>
