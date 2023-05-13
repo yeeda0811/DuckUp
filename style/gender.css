@@ -52,7 +52,7 @@ section {
   left: 0px;
   display: flex;
   flex-direction: column;
-  padding: 10px 40px 200px 100px;
+  padding: 10px 40px 200px 80px;
   background-color: #0cc0df;
   border-top-right-radius: 40px;
 }
@@ -61,7 +61,6 @@ section {
   color: white;
 }
 .sidebar .bar {
-  width: 200px;
   display: flex;
   flex-direction: column;
 }
@@ -72,6 +71,7 @@ section {
   color: white;
   border-bottom: solid 2px white;
   padding: 20px 40px 10px 0px;
+  margin-left: 20px;
   transition-duration: 0.5s;
 }
 .sidebar .bar a:hover {

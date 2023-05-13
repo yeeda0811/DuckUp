@@ -57,7 +57,7 @@ section {
   left: 0px;
   display: flex;
   flex-direction: column;
-  padding: 10px 40px 200px 100px;
+  padding: 10px 40px 200px 80px;
   background-color: $theme_c1;
   border-top-right-radius: 40px;
   h3 {
@@ -65,7 +65,7 @@ section {
     color: $theme_light;
   }
   .bar {
-    width: 200px;
+    // width: 200px;
     display: flex;
     flex-direction: column;
     a {
@@ -75,6 +75,7 @@ section {
       color: $theme_light;
       border-bottom: solid 2px $theme_light;
       padding: 20px 40px 10px 0px;
+      margin-left: 20px;
       transition-duration: 0.5s;
       &:hover {
         color: $theme_dark;
