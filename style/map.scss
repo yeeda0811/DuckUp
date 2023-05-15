@@ -1,0 +1,100 @@
+// :root {
+//   --color-gold: #b99362;
+// }
+
+// body {
+//   background-color: #222;
+// }
+
+// svg {
+//   height: 100vh;
+// }
+
+// path {
+//   stroke: white;
+//   fill: transparent;
+//   transition: 0.5s;
+//   cursor: pointer;
+// }
+
+// path:hover {
+//   fill: var(--color-gold);
+//   transform: translate(-5px, -5px);
+// }
+
+:root {
+  --color-gold: #f9b132;
+}
+
+* {
+  font-family: "Fjalla One";
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10rem;
+  //position: absolute;
+  //left: 50%;
+  //top: 50%;
+  //transform: translate3d(-50%, -50%, 0);
+  width: 150%;
+  height: 90%;
+}
+
+svg {
+  height: 100%;
+  width: 100%;
+  flex: 3;
+}
+
+path {
+  stroke: #543927;
+  fill: transparent;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+path:hover {
+  fill: var(--color-gold);
+  transform: translate(-5px, -5px);
+}
+
+.title_area {
+  flex: 2;
+  margin-right: 3vw;
+  margin-top: -5vh;
+  color: white;
+  font-size: 30px;
+}
+
+h1 {
+  font-size: min(10vw, 2em);
+}
+
+h1 span {
+  color: var(--color-gold);
+  padding-left: 10px;
+}
+
+hr {
+  width: 100px;
+  margin-left: 0;
+  border: none;
+  border-bottom: solid 2px white;
+}
+
+.forcast h2,
+.forcast h4,
+.forcast h5 {
+  margin: 0;
+}
+
+.forcast h2 {
+  margin-top: 20px;
+}
