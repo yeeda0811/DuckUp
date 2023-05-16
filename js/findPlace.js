@@ -97,3 +97,7 @@ findPlace.setOption({
     fontFamily: "微軟正黑體",
   },
 });
+function select(){
+	var selected = document.getElementById("tool_type").value;
+	console.log(selected);
+}
