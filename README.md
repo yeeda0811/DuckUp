@@ -1,1 +1,3 @@
 # DuckUp
+
+An opensource project.
