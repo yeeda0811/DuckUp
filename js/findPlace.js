@@ -98,6 +98,7 @@ findPlace.setOption({
   },
 });
 function select(){
-	var selected = document.getElementById("tool_type").value;
+	var selected = document.getElementById("dropdownMenu2").value;
 	console.log(selected);
+	console.log("selected");
 }
