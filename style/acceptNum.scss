@@ -23,12 +23,19 @@ nav {
   padding: 22px 10px;
   background-color: $theme_d1;
   z-index: 5;
+  img {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 30px;
+    margin-top: -2px;
+  }
   .h2 {
     text-decoration: none;
     font-size: 32px;
     font-weight: bold;
     color: $theme_dark;
-    padding-left: 60px;
+    padding-left: 80px;
     margin-bottom: 0px;
   }
   .year {

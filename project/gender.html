@@ -5,27 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>性別</title>
+    <!-- Add CSS -->
     <link rel="stylesheet" href="../style/gender.css" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"
-      integrity="sha512-VdqgeoWrVJcsDXFlQEKqE5MyhaIgB9yXUVaiUa8DR2J4Lr1uWcFm+ZH/YnzV5WqgKf4GPyHQ64vVLgzqGIchyw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <!-- Add Echart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+    <!-- Add Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <nav>
+      <img src="../public/Duck.png" alt="..." />
       <a href="" class="h2">DuckUp</a>
       <div class="year">
-        <a href="">107年度</a><a href="">108年度</a><a href="">109年度</a
-        ><a href="">110年度</a><a href="">111年度</a>
+        <a id="107" href="#">107年度</a><a id="108" href="#">108年度</a
+        ><a id="109" href="#">109年度</a><a id="110" href="#">110年度</a
+        ><a id="111" href="#">111年度</a>
       </div>
     </nav>
 
     <section>
       <div class="sidebar">
-        <h3>107年度</h3>
+        <h3 id="year">107年度</h3>
         <div class="bar">
           <a href="" style="padding-top: 0px">統計報表</a><a href="">尋獲地點</a
           ><a href="">收容所地點</a><a href="#">性別</a><a href="">是否混種</a
@@ -45,6 +45,34 @@
       </div>
     </section>
 
-    <script type="module" src="../js/genderChart.js"></script>
+    <script type="module">
+      import genderChart from "../js/genderChart.js";
+      genderChart();
+      const seven = document.getElementById("107");
+      const eight = document.getElementById("108");
+      const nine = document.getElementById("109");
+      const ten = document.getElementById("110");
+      const eleven = document.getElementById("111");
+      seven.addEventListener("click", (event) => {
+        document.getElementById("year").innerHTML = "107年度";
+        genderChart();
+      });
+      eight.addEventListener("click", (event) => {
+        document.getElementById("year").innerHTML = "108年度";
+        genderChart();
+      });
+      nine.addEventListener("click", (event) => {
+        document.getElementById("year").innerHTML = "109年度";
+        genderChart();
+      });
+      ten.addEventListener("click", (event) => {
+        document.getElementById("year").innerHTML = "110年度";
+        genderChart();
+      });
+      eleven.addEventListener("click", (event) => {
+        document.getElementById("year").innerHTML = "111年度";
+        genderChart();
+      });
+    </script>
   </body>
 </html>
