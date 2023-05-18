@@ -18,12 +18,19 @@ nav {
   background-color: #f9b132;
   z-index: 5;
 }
+nav img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 30px;
+  margin-top: -2px;
+}
 nav .h2 {
   text-decoration: none;
   font-size: 32px;
   font-weight: bold;
   color: #543927;
-  padding-left: 60px;
+  padding-left: 80px;
   margin-bottom: 0px;
 }
 nav .year {
@@ -53,7 +60,7 @@ section {
   left: 0px;
   display: flex;
   flex-direction: column;
-  padding: 10px 40px 200px 80px;
+  padding: 10px 40px 350px 80px;
   background-color: #0cc0df;
   border-top-right-radius: 40px;
 }
@@ -98,6 +105,27 @@ section {
   font-weight: bold;
   color: #543927;
   align-self: baseline;
+}
+.diagram .title .dropdown {
+  position: absolute;
+  margin-top: -450px;
+  padding: 5px;
+}
+.diagram .title .dropdown .dropdown-toggle {
+  background-color: #543927;
+}
+.diagram .title .dropdown .dropdown-menu {
+  --bs-dropdown-min-width: 6rem;
+  padding: 5px;
+  z-index: 3;
+}
+.diagram .title .dropdown .dropdown-menu .dropdown-item {
+  color: #543927;
+  border-radius: 5px;
+  padding: 4px 22px;
+}
+.diagram .title .dropdown .dropdown-menu .dropdown-item:hover {
+  background-color: #ffcf82;
 }
 .diagram .title .content {
   display: flex;
