@@ -72,7 +72,7 @@ const acceptNumChart = () => {
           item.end_rate = parseFloat(item.end_rate);
           humaneRate.push(item.end_rate);
         }
-      })
+      });
     });
     printActChart(humaneNum, humaneRate);
   });
@@ -84,10 +84,10 @@ function printActChart(humaneNum, humaneRate) {
 
   humaneChart.setOption({
     tooltip: {
-      trigger: 'axis',
+      trigger: "axis",
       axisPointer: {
-        type: 'cross'
-      }
+        type: "cross",
+      },
     },
     toolbox: {
       feature: {
@@ -109,8 +109,21 @@ function printActChart(humaneNum, humaneRate) {
     },
     xAxis: [
       {
-        type: 'category',
-        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        type: "category",
+        data: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ],
         axisPointer: {
           type: "shadow",
         },
@@ -120,35 +133,36 @@ function printActChart(humaneNum, humaneRate) {
           fontFamily: "微軟正黑體",
           lineHeight: 36,
         },
-      }
+      },
     ],
     yAxis: [
       {
-        type: 'value',
-        name: '人道處理數(隻)',
+        type: "value",
+        name: "人道處理數(隻)",
         min: 0,
         max: 20,
-        interval: 50,
+        interval: 5,
         axisLabel: {
-          formatter: '{value}隻',
+          formatter: "{value}隻",
           color: "#543927",
           fontSize: 16,
           fontFamily: "微軟正黑體",
-        }
+        },
       },
       {
-        type: 'value',
-        name: '人道處理率(%)',
+        type: "value",
+        name: "人道處理率(%)",
         min: 0,
         max: 100,
+        interval: 25,
         axisLabel: {
-          formatter: '{value}%'
-        }
-      }
+          formatter: "{value}%",
+        },
+      },
     ],
     series: [
       {
-        name: '人道處理數',
+        name: "人道處理數",
         type: "bar",
         color: ["#543927"],
         tooltip: {
@@ -159,8 +173,8 @@ function printActChart(humaneNum, humaneRate) {
         data: humaneNum,
       },
       {
-        name: '人道處理率',
-        type: 'line',
+        name: "人道處理率",
+        type: "line",
         color: ["#f9b132"],
         yAxisIndex: 1,
         tooltip: {
@@ -170,9 +184,8 @@ function printActChart(humaneNum, humaneRate) {
         },
         data: humaneRate,
       },
-    ]
+    ],
   });
-};
-
+}
 
 export default acceptNumChart;

@@ -101,63 +101,50 @@ section {
 
 .diagram {
   display: flex;
-  flex-direction: column;
   padding-left: 120px;
-
+  column-gap: 60px;
+  padding-top: 36px;
   .title {
     display: flex;
-    align-items: center;
-    column-gap: 60px;
-    padding-top: 36px;
-
+    flex-direction: column;
     h1 {
       font-size: 42px;
       font-weight: bold;
       color: $theme_dark;
       align-self: baseline;
     }
-
     .dropdown {
-      position: absolute;
-      margin-top: -450px;
       padding: 5px;
-
       .dropdown-toggle {
         background-color: $theme_dark;
       }
-
       .dropdown-menu {
         --bs-dropdown-min-width: 6rem;
         padding: 5px;
         z-index: 3;
-
         .dropdown-item {
           color: $theme_dark;
           border-radius: 5px;
           padding: 4px 22px;
-
           &:hover {
             background-color: $theme_d2;
           }
         }
       }
     }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      padding-top: 20px;
-
-      .nav-link {
-        color: $theme_d1;
-        font-size: 24px;
-        font-weight: bold;
-        padding: 10px 60px;
-      }
-
-      .active {
-        color: $theme_dark;
-      }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    .nav-link {
+      color: $theme_d1;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 10px 60px;
+    }
+    .active {
+      color: $theme_dark;
     }
   }
 }
