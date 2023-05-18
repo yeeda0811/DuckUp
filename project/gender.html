@@ -17,9 +17,11 @@
       <img src="../public/Duck.png" alt="..." />
       <a href="" class="h2">DuckUp</a>
       <div class="year">
-        <a id="107" href="#">107年度</a><a id="108" href="#">108年度</a
-        ><a id="109" href="#">109年度</a><a id="110" href="#">110年度</a
-        ><a id="111" href="#">111年度</a>
+        <a class="year-item" href="#">107年度</a
+        ><a class="year-item" href="#">108年度</a
+        ><a class="year-item" href="#">109年度</a
+        ><a class="year-item" href="#">110年度</a
+        ><a class="year-item" href="#">111年度</a>
       </div>
     </nav>
 
@@ -27,9 +29,10 @@
       <div class="sidebar">
         <h3 id="year">107年度</h3>
         <div class="bar">
-          <a href="" style="padding-top: 0px">統計報表</a><a href="">尋獲地點</a
-          ><a href="">收容所地點</a><a href="#">性別</a><a href="">是否混種</a
-          ><a href="">是否健康</a>
+          <a href="#" style="padding-top: 0px">統計報表</a
+          ><a href="./findPlace.html">尋獲地點</a
+          ><a href="./map.html">收容所地點</a><a href="#">性別</a
+          ><a href="#">是否混種</a><a href="./healthy.html">是否健康</a>
         </div>
       </div>
 
@@ -53,9 +56,9 @@
       import genderChart from "../js/genderChart.js";
       genderChart();
 
+      //select dog or cat chart
       const dog = document.getElementById("dog");
       const cat = document.getElementById("cat");
-
       dog.addEventListener("click", (event) => {
         document.getElementById("catGender").setAttribute("class", "disappear");
         document.getElementById("dogGender").setAttribute("class", "");
@@ -65,30 +68,13 @@
         document.getElementById("dogGender").setAttribute("class", "disappear");
       });
 
-      const seven = document.getElementById("107");
-      const eight = document.getElementById("108");
-      const nine = document.getElementById("109");
-      const ten = document.getElementById("110");
-      const eleven = document.getElementById("111");
-      seven.addEventListener("click", (event) => {
-        document.getElementById("year").innerHTML = "107年度";
-        genderChart();
-      });
-      eight.addEventListener("click", (event) => {
-        document.getElementById("year").innerHTML = "108年度";
-        genderChart();
-      });
-      nine.addEventListener("click", (event) => {
-        document.getElementById("year").innerHTML = "109年度";
-        genderChart();
-      });
-      ten.addEventListener("click", (event) => {
-        document.getElementById("year").innerHTML = "110年度";
-        genderChart();
-      });
-      eleven.addEventListener("click", (event) => {
-        document.getElementById("year").innerHTML = "111年度";
-        genderChart();
+      //display chart by year selection
+      const year = document.getElementsByClassName("year-item");
+      Array.from(year).forEach((element) => {
+        element.addEventListener("click", (event) => {
+          document.getElementById("year").innerHTML = element.innerHTML;
+          genderChart();
+        });
       });
     </script>
   </body>

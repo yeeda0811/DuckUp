@@ -65,7 +65,7 @@ section {
   left: 0px;
   display: flex;
   flex-direction: column;
-  padding: 10px 40px 200px 80px;
+  padding: 10px 40px 350px 80px;
   background-color: $theme_c1;
   border-top-right-radius: 40px;
   h3 {
@@ -107,6 +107,27 @@ section {
       font-weight: bold;
       color: $theme_dark;
       align-self: baseline;
+    }
+    .dropdown {
+      position: absolute;
+      margin-top: -450px;
+      padding: 5px;
+      .dropdown-toggle {
+        background-color: $theme_dark;
+      }
+      .dropdown-menu {
+        --bs-dropdown-min-width: 6rem;
+        padding: 5px;
+        z-index: 3;
+        .dropdown-item {
+          color: $theme_dark;
+          border-radius: 5px;
+          padding: 4px 22px;
+          &:hover {
+            background-color: $theme_d2;
+          }
+        }
+      }
     }
     .content {
       display: flex;
