@@ -179,6 +179,52 @@
                     </div>
                 </div>
             </div>
+            <div id="chart" style="width: 800px; height: 400px">
+                <script>
+                    var mychart = echarts.init(document.getElementById("chart"));
+                    var option = {
+                        title: {
+                            text: '標題文字'
+                        },
+                        tooltip: {
+                            trigger: "item",
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: "vertical",
+                            left: 10,
+                            top: 30,
+                            data: ["FB", "IG", "YT", "PTT", "Dcard"]
+                        },
+                        series: [
+                            {
+                                name: "來源",
+                                type: 'pie',
+                                radius: ["50%", "70%"],
+                                label: {
+                                    show: false,
+                                    position: "center",
+                                },
+                                emphasis: {
+                                    label: {
+                                        show: true,
+                                        fontSize: "30",
+                                        fontWeight: "bold",
+                                    },
+                                },
+                                data: [
+                                    { value: 108, name: "FB" },
+                                    { value: 109, name: "IG" },
+                                    { value: 106, name: "YT" },
+                                    { value: 39, name: "PTT" },
+                                    { value: 34, name: "Dcard" },
+                                ],
+                            }
+                        ],
+                    };
+                    mychart.setOption(option);
+                </script>
+            </div>
         </div>
     </section>
 
