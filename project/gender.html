@@ -37,17 +37,34 @@
         <div class="title">
           <h1>性別</h1>
           <div class="tab">
-            <a href="" class="dog">犬</a><a href="" class="cat">貓</a>
+            <a href="#" id="dog">犬</a><a href="#" id="cat">貓</a>
           </div>
         </div>
         <div id="dogGender" style="width: 800px; height: 500px"></div>
-        <div id="catGender" style="width: 800px; height: 500px"></div>
+        <div
+          id="catGender"
+          class="disappear"
+          style="width: 800px; height: 500px"
+        ></div>
       </div>
     </section>
 
     <script type="module">
       import genderChart from "../js/genderChart.js";
       genderChart();
+
+      const dog = document.getElementById("dog");
+      const cat = document.getElementById("cat");
+
+      dog.addEventListener("click", (event) => {
+        document.getElementById("catGender").setAttribute("class", "disappear");
+        document.getElementById("dogGender").setAttribute("class", "");
+      });
+      cat.addEventListener("click", (event) => {
+        document.getElementById("catGender").setAttribute("class", "");
+        document.getElementById("dogGender").setAttribute("class", "disappear");
+      });
+
       const seven = document.getElementById("107");
       const eight = document.getElementById("108");
       const nine = document.getElementById("109");

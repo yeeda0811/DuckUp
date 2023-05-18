@@ -24,11 +24,12 @@
     }).then(response=>{
         return response.json();
     }).then(json =>{
-        const year = '2022';
+        const year = '2023';
         const regex_y = new RegExp(year); // 年份
         const city = 3; // 縣市代碼
         json.forEach(element => {
-            if(element.animal_kind=="貓"  && regex_y.test(element.animal_createtime) &&element.animal_area_pkid==city){
+            // &&element.animal_area_pkid==city
+            if(element.animal_kind=="貓"  && regex_y.test(element.animal_createtime) ){
                 CatArray.push(element);
             }
         });
@@ -64,13 +65,10 @@
             };
             dataArray[i] = seriesData;
         }
-        console.log("dataArray",dataArray);
-        var myChart = echarts.init(document.getElementById("chart"));
+    console.log("dataArray",dataArray);
+    var myChart = echarts.init(document.getElementById("chart"));
     // 圖表設定與資料
     var option = {
-        title:{
-            text : "領養貓2023",
-        },
         tooltip:{
             trigger:"item",
             formatter : "{a} <br/> {b}: {c} ({d}%)",
@@ -84,6 +82,7 @@
         series:[{
             name:"訪問來源", 
             type:"pie", 
+            color:['#0CC0DF','#005B91','#C7A1E4','#E3FEFF','#86E0EF','#FCFCD4','#95B0B7', '#E1F7FB'],
             radius:["40%", "70%"], // 內半徑、外半徑 ->甜甜圈
             label:{
                 show:false, 

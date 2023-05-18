@@ -18,18 +18,12 @@ nav {
   background-color: #f9b132;
   z-index: 5;
 }
-nav img {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  left: 30px;
-}
 nav .h2 {
   text-decoration: none;
   font-size: 32px;
   font-weight: bold;
   color: #543927;
-  padding-left: 80px;
+  padding-left: 60px;
 }
 nav .year {
   display: flex;
@@ -99,44 +93,6 @@ section {
   font-size: 42px;
   color: #543927;
 }
-.diagram .title .tab {
-  display: flex;
-}
-.diagram .title .tab a {
-  text-decoration: none;
-  font-size: 24px;
-  font-weight: bold;
-  padding: 10px 30px;
-  border-radius: 40px;
-}
-.diagram .title .tab #dog {
-  background-color: #f9b132;
-  color: white;
-  padding-right: 30px;
-  z-index: 2;
-  transition-duration: 0.5s;
-}
-.diagram .title .tab #dog:hover {
-  background-color: #ffcf82;
-  color: #543927;
-}
-.diagram .title .tab #cat {
-  color: white;
-  background-color: #0cc0df;
-  padding-left: 30px;
-  margin-left: 15px;
-  transition-duration: 0.5s;
-}
-.diagram .title .tab #cat:hover {
-  background-color: #e7f2f1;
-  color: #0cc0df;
-}
-
-#dogGender,
-#catGender {
+#adopt {
   padding-left: 80px;
 }
-
-.disappear {
-  display: none;
-}/*# sourceMappingURL=gender.css.map */

@@ -26,7 +26,8 @@
         const regex_y = new RegExp(year);  // 年份
         const city=2;   // 縣市代碼
         json.forEach(element => {
-            if(element.animal_kind=="狗"&& regex_y.test(element.animal_createtime) &&element.animal_area_pkid==city){
+            // &&element.animal_area_pkid==city
+            if(element.animal_kind=="狗"&& regex_y.test(element.animal_createtime) &&element.animal_area_pkid==city ){
                 DogArray.push(element);
             }     
         });
@@ -67,7 +68,23 @@
         }
         console.log("Dog_obj",Dog_obj);
         console.log("Dog_num",Dog_num);
-
+            // if needed -> bubble sort
+        for (var i = 0; i <Dog_num.length; i++) {
+            for (var j = 0; j < (Dog_num.length - i - 1); j++) {
+                // Checking if the item at present iteration 
+                // is greater than the next iteration
+                if (Dog_num[j] < Dog_num[j + 1]) {
+                    // If the condition is true
+                    // then swap them
+                    var temp = Dog_num[j]
+                    var temp_1 = Dog_obj[j]
+                    Dog_num[j] = Dog_num[j + 1]
+                    Dog_obj[j] =Dog_obj[j + 1]
+                    Dog_num[j + 1] = temp
+                    Dog_obj[j + 1] = temp_1
+                }
+            }
+        }
         for(var i=0 ; i<Dog_obj.length; i++){
             const seriesData = {
                 name : Dog_obj[i], 
@@ -80,9 +97,6 @@
         var myChart = echarts.init(document.getElementById("chart"));
         // 圖表設定與資料
         var option = {
-            title:{
-                text : "領養狗2023",
-            },
             tooltip:{
                 trigger:"item",
                 formatter : "{a} <br/> {b}: {c} ({d}%)",
@@ -101,6 +115,7 @@
             series:[{
                 name:"訪問來源", 
                 type:"pie", 
+                color:['#F9B132','#504538','#B7A99A', '#4B8178', '#A58456','#FFECCB','#4B8178', '#502E22'],
                 radius:["40%", "70%"], // 內半徑、外半徑 ->甜甜圈
                 label:{
                     show:false, 
