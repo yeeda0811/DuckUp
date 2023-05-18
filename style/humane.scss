@@ -23,6 +23,15 @@ nav {
   padding: 20px 10px;
   background-color: $theme_d1;
   z-index: 5;
+
+  img {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 30px;
+    margin-top: -2px;
+  }
+
   .h2 {
     text-decoration: none;
     font-size: 32px;
@@ -30,17 +39,20 @@ nav {
     color: $theme_dark;
     padding-left: 60px;
   }
+
   .year {
     display: flex;
     align-items: center;
     column-gap: 30px;
     padding-right: 60px;
+
     a {
       text-decoration: none;
       color: $theme_dark;
       font-size: 24px;
       font-weight: bold;
       transition-duration: 0.5s;
+
       &:hover {
         color: $theme_light;
       }
@@ -60,13 +72,16 @@ section {
   padding: 10px 40px 200px 80px;
   background-color: $theme_c1;
   border-top-right-radius: 40px;
+
   h3 {
     font-size: 36px;
     color: $theme_light;
   }
+
   .bar {
     display: flex;
     flex-direction: column;
+
     a {
       text-decoration: none;
       font-size: 24px;
@@ -76,6 +91,7 @@ section {
       padding: 20px 40px 10px 0px;
       margin-left: 20px;
       transition-duration: 0.5s;
+
       &:hover {
         color: $theme_dark;
       }
@@ -87,50 +103,65 @@ section {
   display: flex;
   flex-direction: column;
   padding-left: 120px;
+
   .title {
     display: flex;
     align-items: center;
     column-gap: 60px;
+    padding-top: 36px;
+
     h1 {
       font-size: 42px;
+      font-weight: bold;
       color: $theme_dark;
+      align-self: baseline;
     }
-    .tab {
+
+    .dropdown {
+      position: absolute;
+      margin-top: -450px;
+      padding: 5px;
+
+      .dropdown-toggle {
+        background-color: $theme_dark;
+      }
+
+      .dropdown-menu {
+        --bs-dropdown-min-width: 6rem;
+        padding: 5px;
+        z-index: 3;
+
+        .dropdown-item {
+          color: $theme_dark;
+          border-radius: 5px;
+          padding: 4px 22px;
+
+          &:hover {
+            background-color: $theme_d2;
+          }
+        }
+      }
+    }
+
+    .content {
       display: flex;
-      a {
-        text-decoration: none;
+      flex-direction: column;
+      padding-top: 20px;
+
+      .nav-link {
+        color: $theme_d1;
         font-size: 24px;
         font-weight: bold;
-        padding: 10px 30px;
-        border-radius: 40px;
+        padding: 10px 60px;
       }
-      .dog {
-        background-color: $theme_d1;
-        color: $theme_light;
-        padding-right: 30px;
-        z-index: 2;
-        transition-duration: 0.5s;
-        // &:hover {
-        //   background-color: $theme_d2;
-        //   color: $theme_dark;
-        // }
-      }
-      .cat {
-        color: $theme_c1;
-        background-color: $theme_c2;
-        padding-left: 60px;
-        margin-left: -45px;
-        transition-duration: 0.5s;
-        &:hover {
-          background-color: $theme_c1;
-          color: $theme_light;
-        }
+
+      .active {
+        color: $theme_dark;
       }
     }
   }
 }
 
-#dogGender,
-#catGender {
-  padding-left: 80px;
+#chart {
+  padding-top: 20px;
 }
