@@ -65,9 +65,7 @@ findPlace.setOption({
           return value + " 隻";
         },
       },
-      data: [
-        20, 49, 70, 232, 256, 77, 136, 162, 326, 200, 64, 33,
-      ],
+      data: [20, 49, 70, 232, 256, 77, 136, 162, 326, 200, 64, 33],
     },
     {
       name: "貓",
@@ -78,9 +76,7 @@ findPlace.setOption({
           return value + " 隻";
         },
       },
-      data: [
-        26, 59, 90, 24, 87, 77, 156, 122, 387, 188, 60, 23,
-      ],
+      data: [26, 59, 90, 24, 87, 77, 156, 122, 387, 188, 60, 23],
     },
   ],
   tooltip: {
@@ -97,8 +93,8 @@ findPlace.setOption({
     fontFamily: "微軟正黑體",
   },
 });
-function select(){
-	var selected = document.getElementById("dropdownMenu2").value;
-	console.log(selected);
-	console.log("selected");
+function select() {
+  var selected = document.getElementById("dropdownMenu2").value;
+  console.log(selected);
+  console.log("selected");
 }
