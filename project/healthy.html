@@ -1,54 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>是否健康</title>
+    <!-- Add CSS -->
+    <link rel="stylesheet" href="../style/gender.css" />
+    <!-- Add Echart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+    <!-- Add Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>健康-107年度</title>
-  <link rel="stylesheet" href="../style/healthy.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"
-    integrity="sha512-VdqgeoWrVJcsDXFlQEKqE5MyhaIgB9yXUVaiUa8DR2J4Lr1uWcFm+ZH/YnzV5WqgKf4GPyHQ64vVLgzqGIchyw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-
-<body>
-  <nav>
-    <a href="" class="h2">DuckUp</a>
-    <div class="year">
-      <a href="">107年度</a><a href="">108年度</a><a href="">109年度</a><a href="">110年度</a><a href="">111年度</a>
-    </div>
-  </nav>
-
-  <section>
-    <div class="sidebar">
-      <h3>107年度</h3>
-      <div class="bar">
-        <a href="" style="padding-top: 0px">統計報表</a><a href="">尋獲地點</a><a href="">收容所地點</a><a href="#">性別</a><a
-          href="">是否混種</a><a href="">是否健康</a>
+  <body>
+    <nav>
+      <img src="../public/Duck.png" alt="..." />
+      <a href="" class="h2">DuckUp</a>
+      <div class="year">
+        <a class="year-item" href="#">107年度</a
+        ><a class="year-item" href="#">108年度</a
+        ><a class="year-item" href="#">109年度</a
+        ><a class="year-item" href="#">110年度</a
+        ><a class="year-item" href="#">111年度</a>
       </div>
-    </div>
+    </nav>
 
-    <div class="diagram">
-      <div class="title">
-        <h1>健康</h1>
-        <div class="tab">
-          <a href="" class="dog">犬</a><a href="" class="cat">貓</a>
+    <section>
+      <div class="sidebar">
+        <h3 id="year">107年度</h3>
+        <div class="bar">
+          <a href="#" style="padding-top: 0px">統計報表</a
+          ><a href="./findPlace.html">尋獲地點</a
+          ><a href="./map.html">收容所地點</a><a href="./gender.html">性別</a
+          ><a href="#">是否混種</a><a href="#">是否健康</a>
         </div>
       </div>
-      <center>
-        <p style="font-size: 30px; font-weight:bold; color:#543927;">犬</p>
-      </center>
-      <div id="dogHealthy" style="width: 800px; height: 500px"></div>
-      <center>
-        <p style="font-size: 30px; font-weight:bold; color:#543927;">貓</p>
-      </center>
-      <div id="catHealthy" style="width: 800px; height: 500px"></div>
-    </div>
-  </section>
 
-  <script src="../js/healthy.js"></script>
-</body>
+      <div class="diagram">
+        <div class="title">
+          <h1>是否健康</h1>
+          <div class="tab">
+            <a href="#" id="dog">犬</a><a href="#" id="cat">貓</a>
+          </div>
+        </div>
+        <div id="dogHealthy" style="width: 800px; height: 500px"></div>
+        <div
+          id="catHealthy"
+          class="disappear"
+          style="width: 800px; height: 500px"
+        ></div>
+      </div>
+    </section>
+    <script type="module">
+      import healthyChart from "../js/healthy.js";
+      healthyChart();
 
+      //select dog or cat chart
+      const dog = document.getElementById("dog");
+      const cat = document.getElementById("cat");
+      dog.addEventListener("click", (event) => {
+        document
+          .getElementById("catHealthy")
+          .setAttribute("class", "disappear");
+        document.getElementById("dogHealthy").setAttribute("class", "");
+      });
+      cat.addEventListener("click", (event) => {
+        document.getElementById("catHealthy").setAttribute("class", "");
+        document
+          .getElementById("dogHealthy")
+          .setAttribute("class", "disappear");
+      });
+
+      //display chart by year selection
+      const year = document.getElementsByClassName("year-item");
+      Array.from(year).forEach((element) => {
+        element.addEventListener("click", (event) => {
+          document.getElementById("year").innerHTML = element.innerHTML;
+          healthyChart();
+        });
+      });
+    </script>
+  </body>
 </html>
