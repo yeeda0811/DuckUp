@@ -4,6 +4,7 @@ const genderChart = () => {
     1911 +
     "";
 
+  //connect to API
   const baseURL =
     "https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&";
 
@@ -57,6 +58,7 @@ const genderChart = () => {
     printCatChart(mCat, fCat);
   });
 
+  //function of generating dog chart
   function printDogChart(mDog, fDog) {
     let dogChart = echarts.init(document.getElementById("dogGender"));
     let mDogNum = mDog.length;
@@ -106,6 +108,7 @@ const genderChart = () => {
     });
   }
 
+  //function of generating cat chart
   function printCatChart(mCat, fCat) {
     let catChart = echarts.init(document.getElementById("catGender"));
     let mCatNum = mCat.length;

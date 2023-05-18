@@ -22,26 +22,143 @@
   <body>
     <nav>
       <img src="../public/Duck.png" alt="..." />
-      <a href="" class="h2">DuckUp</a>
+      <a href="#" class="h2">DuckUp</a>
       <div class="year">
-        <a href="">107年度</a><a href="">108年度</a><a href="">109年度</a
-        ><a href="">110年度</a><a href="">111年度</a>
+        <a class="year-item" href="#">107年度</a
+        ><a class="year-item" href="#">108年度</a
+        ><a class="year-item" href="#">109年度</a
+        ><a class="year-item" href="#">110年度</a
+        ><a class="year-item" href="#">111年度</a>
       </div>
     </nav>
 
     <section>
       <div class="sidebar">
-        <h3>107年度</h3>
+        <h3 id="year">107年度</h3>
         <div class="bar">
-          <a href="" style="padding-top: 0px">統計報表</a><a href="">尋獲地點</a
-          ><a href="">收容所地點</a><a href="#">性別</a><a href="">是否混種</a
-          ><a href="">是否健康</a>
+          <a href="#" style="padding-top: 0px">統計報表</a
+          ><a href="./findPlace.html">尋獲地點</a
+          ><a href="./map.html">收容所地點</a><a href="./gender.html">性別</a
+          ><a href="#">是否混種</a><a href="./healthy.html">是否健康</a>
         </div>
       </div>
 
       <div class="diagram">
         <div class="title">
-          <h1>高雄市</h1>
+          <h1 id="city">高雄市</h1>
+          <div class="dropdown" id="tool_type" name="tool_type">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenu2"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              縣市列表
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li>
+                <button class="dropdown-item" type="button" value="臺北市">
+                  臺北市
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="新北市">
+                  新北市
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="桃園市">
+                  桃園市
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="臺中市">
+                  臺中市
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="臺南市">
+                  臺南市
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="高雄市">
+                  高雄市
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="宜蘭縣">
+                  宜蘭縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="新竹縣">
+                  新竹縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="苗栗縣">
+                  苗栗縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="彰化縣">
+                  彰化縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="南投縣">
+                  南投縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="雲林縣">
+                  雲林縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="嘉義縣">
+                  嘉義縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="屏東縣">
+                  屏東縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="花蓮縣">
+                  花蓮縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="臺東縣">
+                  臺東縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="澎湖縣">
+                  澎湖縣
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="基隆市">
+                  基隆市
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="新竹市">
+                  新竹市
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" value="嘉義市">
+                  嘉義市
+                </button>
+              </li>
+            </ul>
+          </div>
           <div class="content">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
               <button
@@ -119,9 +236,7 @@
                 role="tabpanel"
                 aria-labelledby="nav-contact-tab"
                 tabindex="0"
-              >
-                ...
-              </div>
+              ></div>
               <div
                 class="tab-pane fade"
                 id="nav-contact"
@@ -137,7 +252,27 @@
       </div>
     </section>
 
-    <!-- Add Chart -->
-    <script src="../js/acceptNumChart.js"></script>
+    <script type="module">
+      import acceptNumChart from "../js/acceptNumChart.js";
+      acceptNumChart();
+
+      //display chart by year selection
+      const year = document.getElementsByClassName("year-item");
+      Array.from(year).forEach((element) => {
+        element.addEventListener("click", (event) => {
+          document.getElementById("year").innerHTML = element.innerHTML;
+          acceptNumChart();
+        });
+      });
+
+      //display chart by city selection
+      const city = document.getElementsByClassName("dropdown-item");
+      Array.from(city).forEach((element) => {
+        element.addEventListener("click", (event) => {
+          document.getElementById("city").innerHTML = element.value;
+          acceptNumChart();
+        });
+      });
+    </script>
   </body>
 </html>
