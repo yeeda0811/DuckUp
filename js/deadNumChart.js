@@ -59,11 +59,23 @@ const deadNumChart = () => {
         petNum.push(element.data[0].dead_num);
       }
     });
-    printActChart(petNum);
+    const petRate = [];
+    res.forEach((element) => {
+      element.data.forEach((item) => {
+        if (typeof item === "undefined") {
+          petRate.push(0);
+        } else {
+          item.end_rate = item.dead_rate.replace(/%/g, "");
+          item.end_rate = parseFloat(item.dead_rate);
+          petRate.push(item.dead_rate);
+        }
+      });
+    });
+    printActChart(petNum, petRate);
   });
 
   //function of generating chart
-  function printActChart(petNum) {
+  function printActChart(petNum, petRate) {
     let deadNumChart = echarts.init(document.getElementById("deadNum"));
 
     deadNumChart.setOption({
@@ -117,6 +129,19 @@ const deadNumChart = () => {
             fontFamily: "微軟正黑體",
           },
         },
+        {
+          type: "value",
+          name: "所內死亡率",
+          // min: 0,
+          // max: 50,
+          // interval: 5,
+          axisLabel: {
+            formatter: "{value}%",
+            color: "#543927",
+            fontSize: 16,
+            fontFamily: "微軟正黑體",
+          },
+        },
       ],
       series: [
         {
@@ -129,9 +154,23 @@ const deadNumChart = () => {
           },
           data: petNum,
         },
+        {
+          type: "line",
+          color: ["#f9b132"],
+          yAxisIndex: 1,
+          tooltip: {
+            valueFormatter: function (value) {
+              return value + " %";
+            },
+          },
+          data: petRate,
+        },
       ],
       tooltip: {
         trigger: "axis",
+        axisPointer: {
+          type: "cross",
+        },
       },
       toolbox: {
         feature: {
@@ -143,6 +182,14 @@ const deadNumChart = () => {
         fontSize: 16,
         fontFamily: "微軟正黑體",
       },
+      legend: {
+        data: ["人道處理數", "人道處理率"],
+        textStyle: {
+          color: "#543927",
+          fontSize: 18,
+          fontFamily: "微軟正黑體",
+        },
+      }
     });
   }
 };
