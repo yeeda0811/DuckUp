@@ -256,15 +256,15 @@
     </section>
 
     <script type="module">
-      import acceptNumChart from "../js/humane.js";
-      acceptNumChart();
+      import humaneChart from "../js/humane.js";
+      humaneChart();
 
       //display chart by year selection
       const year = document.getElementsByClassName("year-item");
       Array.from(year).forEach((element) => {
         element.addEventListener("click", (event) => {
           document.getElementById("year").innerHTML = element.innerHTML;
-          acceptNumChart();
+          humaneChart();
         });
       });
 
@@ -273,7 +273,7 @@
       Array.from(city).forEach((element) => {
         element.addEventListener("click", (event) => {
           document.getElementById("city").innerHTML = element.value;
-          acceptNumChart();
+          humaneChart();
         });
       });
     </script>

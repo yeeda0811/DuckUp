@@ -5,6 +5,7 @@ var Dog_obj = []
 var Dog_item = []
 var dataArray = []
 var url="https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
+
 fetch(url,{
     method:"GET",
 }).then(response=>{

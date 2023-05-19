@@ -1,4 +1,4 @@
-const acceptNumChart = () => {
+const humaneChart = () => {
   //get HTML value
   const year = document.getElementById("year").innerHTML.substring(0, 3);
   const city = document.getElementById("city").innerHTML;
@@ -74,12 +74,12 @@ const acceptNumChart = () => {
         }
       });
     });
-    printActChart(humaneNum, humaneRate);
+    printHumChart(humaneNum, humaneRate);
   });
 };
 
 //function of generating chart
-function printActChart(humaneNum, humaneRate) {
+function printHumChart(humaneNum, humaneRate) {
   let humaneChart = echarts.init(document.getElementById("chart"));
 
   humaneChart.setOption({
@@ -157,6 +157,9 @@ function printActChart(humaneNum, humaneRate) {
         interval: 25,
         axisLabel: {
           formatter: "{value}%",
+          color: "#543927",
+          fontSize: 16,
+          fontFamily: "微軟正黑體",
         },
       },
     ],
@@ -175,11 +178,19 @@ function printActChart(humaneNum, humaneRate) {
       {
         name: "人道處理率",
         type: "line",
-        color: ["#f9b132"],
+        symbolSize: 10,
         yAxisIndex: 1,
         tooltip: {
           valueFormatter: function (value) {
             return value + " %";
+          },
+        },
+        itemStyle: {
+          normal: {
+            color: "#f9b132",
+            lineStyle: {
+              width: 4,
+            },
           },
         },
         data: humaneRate,
@@ -188,4 +199,4 @@ function printActChart(humaneNum, humaneRate) {
   });
 }
 
-export default acceptNumChart;
+export default humaneChart;
