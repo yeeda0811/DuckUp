@@ -7,7 +7,7 @@ var dataArray = []
 var titleText = ""
 var url="https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
 
-fetch(url,{
+fetch( url,{
     method:"GET",
 }).then(response=>{
     return response.json();
@@ -54,6 +54,7 @@ fetch(url,{
         dataArray[i] = seriesData;
     }
 console.log("dataArray",dataArray);
+
 var myChart = echarts.init(document.getElementById("chart"));
 // 圖表設定與資料
 var option = {

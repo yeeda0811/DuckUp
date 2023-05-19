@@ -14,16 +14,24 @@ nav {
   top: 0px;
   display: flex;
   justify-content: space-between;
-  padding: 20px 10px;
+  padding: 22px 10px;
   background-color: #f9b132;
   z-index: 5;
+}
+nav img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 30px;
+  margin-top: -2px;
 }
 nav .h2 {
   text-decoration: none;
   font-size: 32px;
   font-weight: bold;
   color: #543927;
-  padding-left: 60px;
+  padding-left: 80px;
+  margin-bottom: 0px;
 }
 nav .year {
   display: flex;
@@ -52,13 +60,15 @@ section {
   left: 0px;
   display: flex;
   flex-direction: column;
-  padding: 10px 40px 200px 80px;
+  padding: 10px 40px 350px 80px;
   background-color: #0cc0df;
   border-top-right-radius: 40px;
 }
 .sidebar h3 {
   font-size: 36px;
+  font-weight: bold;
   color: white;
+  margin: 38px 0px 36px 0px;
 }
 .sidebar .bar {
   display: flex;
@@ -70,7 +80,7 @@ section {
   font-weight: 600;
   color: white;
   border-bottom: solid 2px white;
-  padding: 20px 40px 10px 0px;
+  padding: 18px 40px 8px 0px;
   margin-left: 20px;
   transition-duration: 0.5s;
 }
@@ -80,19 +90,55 @@ section {
 
 .diagram {
   display: flex;
-  flex-direction: column;
   padding-left: 120px;
+  -moz-column-gap: 60px;
+       column-gap: 60px;
+  padding-top: 36px;
 }
 .diagram .title {
   display: flex;
-  align-items: center;
-  -moz-column-gap: 60px;
-       column-gap: 60px;
+  flex-direction: column;
 }
 .diagram .title h1 {
   font-size: 42px;
+  font-weight: bold;
+  color: #543927;
+  align-self: baseline;
+}
+.diagram .title .dropdown {
+  padding: 5px;
+}
+.diagram .title .dropdown .dropdown-toggle {
+  background-color: #543927;
+}
+.diagram .title .dropdown .dropdown-menu {
+  --bs-dropdown-min-width: 6rem;
+  padding: 5px;
+  z-index: 3;
+}
+.diagram .title .dropdown .dropdown-menu .dropdown-item {
+  color: #543927;
+  border-radius: 5px;
+  padding: 4px 22px;
+}
+.diagram .title .dropdown .dropdown-menu .dropdown-item:hover {
+  background-color: #ffcf82;
+}
+.diagram .content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.diagram .content .nav-link {
+  color: #f9b132;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 60px;
+}
+.diagram .content .active {
   color: #543927;
 }
-#adopt {
-  padding-left: 80px;
-}
+
+#acceptNum {
+  padding-top: 20px;
+}/*# sourceMappingURL=deadNum.css.map */
