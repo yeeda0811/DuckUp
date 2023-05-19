@@ -59,15 +59,28 @@ const deadNumChart = () => {
         petNum.push(element.data[0].dead_num);
       }
     });
-    printActChart(petNum);
+    const petRate = [];
+    res.forEach((element) => {
+      element.data.forEach((item) => {
+        if (typeof item === "undefined") {
+          petRate.push(0);
+        } else {
+          item.dead_rate = item.dead_rate.replace(/%/g, "");
+          item.dead_rate = parseFloat(item.dead_rate);
+          petRate.push(item.dead_rate);
+        }
+      });
+    });
+    printActChart(petNum, petRate);
   });
 
   //function of generating chart
-  function printActChart(petNum) {
+  function printActChart(petNum, petRate) {
     let deadNumChart = echarts.init(document.getElementById("deadNum"));
 
     deadNumChart.setOption({
       legend: {
+        data: ["所內死亡數", "所內死亡率"],
         textStyle: {
           color: "#543927",
           fontSize: 18,
@@ -77,7 +90,6 @@ const deadNumChart = () => {
       xAxis: [
         {
           type: "category",
-          name: "月份",
           data: [
             "Jan",
             "Feb",
@@ -106,7 +118,7 @@ const deadNumChart = () => {
       yAxis: [
         {
           type: "value",
-          name: "所內死亡數",
+          name: "所內死亡數（隻）",
           min: 0,
           max: 50,
           interval: 5,
@@ -117,9 +129,23 @@ const deadNumChart = () => {
             fontFamily: "微軟正黑體",
           },
         },
+        {
+          type: "value",
+          name: "所內死亡率（%）",
+          // min: 0,
+          // max: 50,
+          // interval: 5,
+          axisLabel: {
+            formatter: "{value}%",
+            color: "#543927",
+            fontSize: 16,
+            fontFamily: "微軟正黑體",
+          },
+        },
       ],
       series: [
         {
+          name: "所內死亡數",
           type: "bar",
           color: ["#543927"],
           tooltip: {
@@ -129,9 +155,33 @@ const deadNumChart = () => {
           },
           data: petNum,
         },
+        {
+          name: "所內死亡率",
+          type: "line",
+          color: ["#f9b132"],
+          symbolSize: 10,
+          yAxisIndex: 1,
+          tooltip: {
+            valueFormatter: function (value) {
+              return value + " %";
+            },
+          },
+          itemStyle: {
+            normal: {
+              color: "#f9b132",
+              lineStyle: {
+                width: 4,
+              },
+            },
+          },
+          data: petRate,
+        },
       ],
       tooltip: {
         trigger: "axis",
+        axisPointer: {
+          type: "cross",
+        },
       },
       toolbox: {
         feature: {
@@ -142,6 +192,13 @@ const deadNumChart = () => {
         color: "#543927",
         fontSize: 16,
         fontFamily: "微軟正黑體",
+      },
+      legend: {
+        textStyle: {
+          color: "#543927",
+          fontSize: 18,
+          fontFamily: "微軟正黑體",
+        },
       },
     });
   }
