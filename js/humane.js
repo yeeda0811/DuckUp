@@ -1,4 +1,4 @@
-const acceptNumChart = () => {
+const humaneChart = () => {
   //get HTML value
   const year = document.getElementById("year").innerHTML.substring(0, 3);
   const city = document.getElementById("city").innerHTML;
@@ -74,12 +74,12 @@ const acceptNumChart = () => {
         }
       });
     });
-    printActChart(humaneNum, humaneRate);
+    printHumChart(humaneNum, humaneRate);
   });
 };
 
 //function of generating chart
-function printActChart(humaneNum, humaneRate) {
+function printHumChart(humaneNum, humaneRate) {
   let humaneChart = echarts.init(document.getElementById("chart"));
 
   humaneChart.setOption({
@@ -188,4 +188,4 @@ function printActChart(humaneNum, humaneRate) {
   });
 }
 
-export default acceptNumChart;
+export default humaneChart;
