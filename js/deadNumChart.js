@@ -65,8 +65,8 @@ const deadNumChart = () => {
         if (typeof item === "undefined") {
           petRate.push(0);
         } else {
-          item.end_rate = item.dead_rate.replace(/%/g, "");
-          item.end_rate = parseFloat(item.dead_rate);
+          item.dead_rate = item.dead_rate.replace(/%/g, "");
+          item.dead_rate = parseFloat(item.dead_rate);
           petRate.push(item.dead_rate);
         }
       });
