@@ -26,11 +26,6 @@ const findPlaceChart = () => {
     ["連江縣", "City000023"],
   ]);
 
-  var CatArray = [];
-  var City = [];
-  var Animals_count = [];
-  var Cat_obj = [];
-  var dataArray = [];
   var baseURL =
     "https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=DyplMIk3U1hf&";
 
@@ -65,99 +60,75 @@ const findPlaceChart = () => {
       // console.log(res);
       const allCitys = [];
       let petNum = 0;
+      let cityName = "";
       res.forEach((element) => {
-        element.data.foreach((element) => {
-          if (rpt_month !== 0) {
+        element.data.forEach((element) => {
+          if (element.rpt_month !== 0) {
             petNum += element.accept_num;
           }
+          cityName = element.rpt_country;
         });
-        allCitys.push(petNum);
+        allCitys.push({ value: petNum, name: cityName });
+        petNum = 0;
       });
-
-      City = CatArray.map((item) => {
-        return item.animal_Variety.trim();
-      });
-      // console.log("City", City);
-
-      Animals_count = City.reduce((obj, item) => {
-        if (item in obj) {
-          obj[item]++;
-        } else {
-          obj[item] = 1;
-        }
-        return obj;
-      }, {});
-      // console.log("Cat count",Animals_count);
-      Cat_obj = Object.keys(Animals_count);
-      Cat_num = Object.values(Animals_count);
-      // 處理空字串
-      for (var i = 0; i < Cat_obj.length; i++) {
-        if (Cat_obj[i] == "") {
-          Cat_obj[i] = "未登記";
-        }
-      }
-      console.log("Cat_obj", Cat_obj);
-      console.log("Cat_num", Cat_num);
-
-      for (var i = 0; i < Cat_obj.length; i++) {
-        const seriesData = {
-          name: Cat_obj[i],
-          value: Cat_num[i],
-        };
-        dataArray[i] = seriesData;
-      }
-      console.log("dataArray", dataArray);
-      var myChart = echarts.init(document.getElementById("chart"));
-      // 圖表設定與資料
-      var option = {
-        tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/> {b}: {c} ({d}%)",
-        },
-        legend: {
-          orient: "vertical",
-          left: 10,
-          top: 30,
-          data: Cat_obj,
-        },
-        series: [
-          {
-            name: "訪問來源",
-            type: "pie",
-            color: [
-              "#0CC0DF",
-              "#005B91",
-              "#C7A1E4",
-              "#E3FEFF",
-              "#86E0EF",
-              "#FCFCD4",
-              "#95B0B7",
-              "#E1F7FB",
-            ],
-            radius: ["40%", "70%"], // 內半徑、外半徑 ->甜甜圈
-            label: {
-              show: false,
-              position: "center",
-            },
-            // spootlight -> 選取項目 name出現在中間
-            emphasis: {
-              label: {
-                formatter: "{b}\n{c}" + " 隻",
-                show: true,
-                fontSize: "25px",
-                fontWeight: "bold",
-              },
-            },
-            data: dataArray,
-          },
-        ],
-      };
-
-      myChart.setOption(option);
+      printFpChart(allCitys);
     })
     .catch((error) => {
       console.log(error);
     });
+
+  function printFpChart(allCitys) {
+    let dogChart = echarts.init(document.getElementById("chart"));
+    dogChart.setOption({
+      series: [
+        {
+          name: "",
+          type: "pie",
+          color: [
+            "#F9B132",
+            "#504538",
+            "#B7A99A",
+            "#4B8178",
+            "#A58456",
+            "#FFECCB",
+            "#4B8178",
+            "#502E22",
+          ],
+          label: {
+            color: "#543927",
+            fontSize: 18,
+            fontWeight: "bold",
+            fontFamily: "微軟正黑體",
+          },
+          radius: "80%",
+          data: allCitys,
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: "rgba(249, 177, 50, 0.5)",
+            },
+          },
+        },
+      ],
+      tooltip: {
+        trigger: "item",
+        formatter: "{b} : {c} ({d}%)",
+        backgroundColor: "rgba(249, 177, 50, 0.5)",
+        textStyle: {
+          color: "white",
+          fontSize: 14,
+          fontWeight: "bold",
+          fontFamily: "微軟正黑體",
+        },
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: { show: true },
+        },
+      },
+    });
+  }
 };
 
 export default findPlaceChart;
