@@ -90,15 +90,14 @@ section {
 
 .diagram {
   display: flex;
-  flex-direction: column;
   padding-left: 120px;
-}
-.diagram .title {
-  display: flex;
-  align-items: center;
   -moz-column-gap: 60px;
        column-gap: 60px;
   padding-top: 36px;
+}
+.diagram .title {
+  display: flex;
+  flex-direction: column;
 }
 .diagram .title h1 {
   font-size: 42px;
@@ -107,8 +106,6 @@ section {
   align-self: baseline;
 }
 .diagram .title .dropdown {
-  position: absolute;
-  margin-top: -450px;
   padding: 5px;
 }
 .diagram .title .dropdown .dropdown-toggle {
@@ -127,18 +124,18 @@ section {
 .diagram .title .dropdown .dropdown-menu .dropdown-item:hover {
   background-color: #ffcf82;
 }
-.diagram .title .content {
+.diagram .content {
   display: flex;
   flex-direction: column;
   padding-top: 20px;
 }
-.diagram .title .content .nav-link {
+.diagram .content .nav-link {
   color: #f9b132;
   font-size: 24px;
   font-weight: bold;
   padding: 10px 60px;
 }
-.diagram .title .content .active {
+.diagram .content .active {
   color: #543927;
 }
 
