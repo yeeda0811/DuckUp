@@ -1,7 +1,7 @@
 const findPlaceChart = () => {
-  //get HTML value
+
   const year = document.getElementById("year").innerHTML.substring(0, 3);
-  const city = document.getElementById("city").innerHTML;
+
   const citycode = new Map([
     ["臺北市", "City000002"],
     ["新北市", "City000003"],
@@ -27,124 +27,126 @@ const findPlaceChart = () => {
     ["連江縣", "City000023"],
   ]);
 
-  //connect to API
-  const baseURL =
-    "https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=DyplMIk3U1hf&";
+  var CatArray = [];
+  var City = []
+  var Animals_count = []
+  var Cat_obj = []
+  var dataArray = []
+  var baseURL = "https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=DyplMIk3U1hf&";
 
-  function getPetNum(year, month, city) {
+  function getPetNum(year, city) {
     return axios.get(
-      `${baseURL}rpt_year=${year}&rpt_month=${month}&rpt_country_code=${city}`
+      `${baseURL}rpt_year=${year}&rpt_country_code=${city}`
     );
   }
-
   Promise.all([
-    getPetNum(year, 1, citycode.get(city)),
-    getPetNum(year, 2, citycode.get(city)),
-    getPetNum(year, 3, citycode.get(city)),
-    getPetNum(year, 4, citycode.get(city)),
-    getPetNum(year, 5, citycode.get(city)),
-    getPetNum(year, 6, citycode.get(city)),
-    getPetNum(year, 7, citycode.get(city)),
-    getPetNum(year, 8, citycode.get(city)),
-    getPetNum(year, 9, citycode.get(city)),
-    getPetNum(year, 10, citycode.get(city)),
-    getPetNum(year, 11, citycode.get(city)),
-    getPetNum(year, 12, citycode.get(city)),
-  ]).then((res) => {
-    const petNum = [];
-    res.forEach((element) => {
-      if (typeof element.data[0] === "undefined") {
-        petNum.push(0);
-      } else {
-        petNum.push(element.data[0].accept_num);
+    getPetNum(year, "City000002"),
+    getPetNum(year, "City000003"),
+    getPetNum(year, "City000004"),
+    getPetNum(year, "City000005"),
+    getPetNum(year, "City000006"),
+    getPetNum(year, "City000007"),
+    getPetNum(year, "City000008"),
+    getPetNum(year, "City000009"),
+    getPetNum(year, "City000010"),
+    getPetNum(year, "City000011"),
+    getPetNum(year, "City000012"),
+    getPetNum(year, "City000013"),
+    getPetNum(year, "City000014"),
+    getPetNum(year, "City000015"),
+    getPetNum(year, "City000016"),
+    getPetNum(year, "City000017"),
+    getPetNum(year, "City000018"),
+    getPetNum(year, "City000019"),
+    getPetNum(year, "City000020"),
+    getPetNum(year, "City000021"),
+    getPetNum(year, "City000022"),
+    getPetNum(year, "City000023"),
+  ]).then(response => {
+    return response.json();
+  }).then(json => {
+    const year = '2023';
+    const regex_y = new RegExp(year); // 年份
+    const city = 3; // 縣市代碼
+    json.forEach(element => {
+      // &&element.animal_area_pkid==city
+      if (element.animal_kind == "貓" && regex_y.test(element.animal_createtime)) {
+        CatArray.push(element);
       }
     });
-    printActChart(petNum);
-  });
+    City = CatArray.map(item => {
+      return item.animal_Variety.trim()
+    })
+    // console.log("City", City);
 
-  //function of generating chart
-  function printActChart(petNum) {
-    let findPlaceChart = echarts.init(document.getElementById("findPlace"));
+    Animals_count = City.reduce((obj, item) => {
+      if (item in obj) {
+        obj[item]++
+      } else {
+        obj[item] = 1
+      }
+      return obj
+    }, {})
+    // console.log("Cat count",Animals_count);
+    Cat_obj = Object.keys(Animals_count);
+    Cat_num = Object.values(Animals_count);
+    // 處理空字串
+    for (var i = 0; i < Cat_obj.length; i++) {
+      if (Cat_obj[i] == '') {
+        Cat_obj[i] = "未登記";
+      }
+    }
+    console.log("Cat_obj", Cat_obj);
+    console.log("Cat_num", Cat_num);
 
-    findPlaceChart.setOption({
-      legend: {
-        textStyle: {
-          color: "#543927",
-          fontSize: 18,
-          fontFamily: "微軟正黑體",
-        },
-      },
-      xAxis: [
-        {
-          type: "category",
-          name: "月份",
-          data: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          axisPointer: {
-            type: "shadow",
-          },
-          axisLabel: {
-            color: "#543927",
-            fontSize: 16,
-            fontFamily: "微軟正黑體",
-            lineHeight: 36,
-          },
-        },
-      ],
-      yAxis: [
-        {
-          type: "value",
-          name: "收容隻數",
-          min: 0,
-          max: 1000,
-          interval: 100,
-          axisLabel: {
-            formatter: "{value}隻",
-            color: "#543927",
-            fontSize: 16,
-            fontFamily: "微軟正黑體",
-          },
-        },
-      ],
-      series: [
-        {
-          type: "bar",
-          color: ["#543927"],
-          tooltip: {
-            valueFormatter: function (value) {
-              return value + " 隻";
-            },
-          },
-          data: petNum,
-        },
-      ],
+    for (var i = 0; i < Cat_obj.length; i++) {
+      const seriesData = {
+        name: Cat_obj[i],
+        value: Cat_num[i]
+      };
+      dataArray[i] = seriesData;
+    }
+    console.log("dataArray", dataArray);
+    var myChart = echarts.init(document.getElementById("chart"));
+    // 圖表設定與資料
+    var option = {
       tooltip: {
-        trigger: "axis",
+        trigger: "item",
+        formatter: "{a} <br/> {b}: {c} ({d}%)",
       },
-      toolbox: {
-        feature: {
-          saveAsImage: { show: true },
+      legend: {
+        orient: "vertical",
+        left: 10,
+        top: 30,
+        data: Cat_obj,
+      },
+      series: [{
+        name: "訪問來源",
+        type: "pie",
+        color: ['#0CC0DF', '#005B91', '#C7A1E4', '#E3FEFF', '#86E0EF', '#FCFCD4', '#95B0B7', '#E1F7FB'],
+        radius: ["40%", "70%"], // 內半徑、外半徑 ->甜甜圈
+        label: {
+          show: false,
+          position: "center",
         },
-      },
-      textStyle: {
-        color: "#543927",
-        fontSize: 16,
-        fontFamily: "微軟正黑體",
-      },
-    });
-  }
+        // spootlight -> 選取項目 name出現在中間
+        emphasis: {
+          label: {
+            formatter: "{b}\n{c}" + " 隻",
+            show: true,
+            fontSize: "25px",
+            fontWeight: "bold",
+          }
+        },
+        data: dataArray,
+      }],
+    };
+
+    myChart.setOption(option);
+  }).catch(error => {
+    console.log(error);
+  })
+
 };
 
 export default findPlaceChart;
