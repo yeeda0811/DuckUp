@@ -63,8 +63,6 @@ const findPlaceChart = () => {
     getPetNum(year, "City000022"),
     getPetNum(year, "City000023"),
   ]).then(response => {
-    return response.json();
-  }).then(json => {
     const year = '2023';
     const regex_y = new RegExp(year); // 年份
     const city = 3; // 縣市代碼
