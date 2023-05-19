@@ -80,6 +80,7 @@ const deadNumChart = () => {
 
     deadNumChart.setOption({
       legend: {
+        data: ["所內死亡數", "所內死亡率"],
         textStyle: {
           color: "#543927",
           fontSize: 18,
@@ -89,7 +90,6 @@ const deadNumChart = () => {
       xAxis: [
         {
           type: "category",
-          name: "月份",
           data: [
             "Jan",
             "Feb",
@@ -118,7 +118,7 @@ const deadNumChart = () => {
       yAxis: [
         {
           type: "value",
-          name: "所內死亡數",
+          name: "所內死亡數（隻）",
           min: 0,
           max: 50,
           interval: 5,
@@ -131,7 +131,7 @@ const deadNumChart = () => {
         },
         {
           type: "value",
-          name: "所內死亡率",
+          name: "所內死亡率（%）",
           // min: 0,
           // max: 50,
           // interval: 5,
@@ -145,6 +145,7 @@ const deadNumChart = () => {
       ],
       series: [
         {
+          name: "所內死亡數",
           type: "bar",
           color: ["#543927"],
           tooltip: {
@@ -155,12 +156,22 @@ const deadNumChart = () => {
           data: petNum,
         },
         {
+          name: "所內死亡率",
           type: "line",
           color: ["#f9b132"],
+          symbolSize: 10,
           yAxisIndex: 1,
           tooltip: {
             valueFormatter: function (value) {
               return value + " %";
+            },
+          },
+          itemStyle: {
+            normal: {
+              color: "#f9b132",
+              lineStyle: {
+                width: 4,
+              },
             },
           },
           data: petRate,
@@ -183,13 +194,12 @@ const deadNumChart = () => {
         fontFamily: "微軟正黑體",
       },
       legend: {
-        data: ["人道處理數", "人道處理率"],
         textStyle: {
           color: "#543927",
           fontSize: 18,
           fontFamily: "微軟正黑體",
         },
-      }
+      },
     });
   }
 };
