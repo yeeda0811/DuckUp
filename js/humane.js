@@ -157,6 +157,9 @@ function printHumChart(humaneNum, humaneRate) {
         interval: 25,
         axisLabel: {
           formatter: "{value}%",
+          color: "#543927",
+          fontSize: 16,
+          fontFamily: "微軟正黑體",
         },
       },
     ],
@@ -175,11 +178,19 @@ function printHumChart(humaneNum, humaneRate) {
       {
         name: "人道處理率",
         type: "line",
-        color: ["#f9b132"],
+        symbolSize: 10,
         yAxisIndex: 1,
         tooltip: {
           valueFormatter: function (value) {
             return value + " %";
+          },
+        },
+        itemStyle: {
+          normal: {
+            color: "#f9b132",
+            lineStyle: {
+              width: 4,
+            },
           },
         },
         data: humaneRate,
