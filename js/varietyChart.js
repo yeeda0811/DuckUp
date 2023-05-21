@@ -77,7 +77,7 @@ const varietyChart = () => {
           },
           tooltip: {
             trigger: "item",
-            formatter: "{a} <br/> {b}: {c} ({d}%)",
+            formatter: "{b}: {c} ({d}%)",
           },
           legend: {
             orient: "vertical",
@@ -91,7 +91,7 @@ const varietyChart = () => {
           },
           series: [
             {
-              name: "訪問來源",
+              name: "",
               type: "pie",
               color: [
                 "#0CC0DF",
@@ -226,7 +226,7 @@ const varietyChart = () => {
         var option = {
           tooltip: {
             trigger: "item",
-            formatter: "{a} <br/> {b}: {c} ({d}%)",
+            formatter: "{b}: {c} ({d}%)",
             // a,  ,b, c, d 有特殊對應名稱
             // a = 資料所屬系列名稱
             // b = 資料項的名稱
@@ -251,7 +251,7 @@ const varietyChart = () => {
           },
           series: [
             {
-              name: "訪問來源",
+              name: "",
               type: "pie",
               color: [
                 "#F9B132",
