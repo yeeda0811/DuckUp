@@ -1,78 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>混種</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>是否混種</title>
     <link rel="stylesheet" href="../style/variety.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js" integrity="sha512-VdqgeoWrVJcsDXFlQEKqE5MyhaIgB9yXUVaiUa8DR2J4Lr1uWcFm+ZH/YnzV5WqgKf4GPyHQ64vVLgzqGIchyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
-<body>
-  <nav>
-    <img src="../public/Duck.png" alt="..." />
-    <a href="" class="h2">DuckUp</a>
-    <div class="year">
-      <a class="year-item" href="#">107年度</a
-      ><a class="year-item" href="#">108年度</a
-      ><a class="year-item" href="#">109年度</a
-      ><a class="year-item" href="#">110年度</a
-      ><a class="year-item" href="#">111年度</a>
-    </div>
-  </nav>
-
-  <section>
-    <div class="sidebar">
-      <h3 id="year">107年度</h3>
-      <div class="bar">
-        <a href="#" style="padding-top: 0px">統計報表</a
-        ><a href="./findPlace.html">尋獲地點</a
-        ><a href="./map.html">收容所地點</a><a href="./gender.html">性別</a
-        ><a href="./variety.html">是否混種</a><a href="./healthy.html">是否健康</a>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"
+      integrity="sha512-VdqgeoWrVJcsDXFlQEKqE5MyhaIgB9yXUVaiUa8DR2J4Lr1uWcFm+ZH/YnzV5WqgKf4GPyHQ64vVLgzqGIchyw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <nav>
+      <img src="../public/Duck.png" alt="..." />
+      <a href="" class="h2">DuckUp</a>
+      <div class="year">
+        <a class="year-item" href="#">107年度</a
+        ><a class="year-item" href="#">108年度</a
+        ><a class="year-item" href="#">109年度</a
+        ><a class="year-item" href="#">110年度</a
+        ><a class="year-item" href="#">111年度</a>
       </div>
-    </div>
+    </nav>
 
-    <div class="diagram">
-      <div class="title">
-        <h1>品種</h1>
-        <div class="tab">
-          <a href="#" id="dog" class="kind">犬</a><a href="#" id="cat" class="kind">貓</a>
+    <section>
+      <div class="sidebar">
+        <h3 id="year">107年度</h3>
+        <div class="bar">
+          <a href="#" style="padding-top: 0px">統計報表</a
+          ><a href="./findPlace.html">尋獲地點</a
+          ><a href="./map.html">收容所地點</a><a href="./gender.html">性別</a
+          ><a href="#">是否混種</a><a href="./healthy.html">是否健康</a>
         </div>
       </div>
-      <div id="dogVariety" style="width: 800px; height: 500px"></div>
-      <div
-        id="catVariety"
-        class="disappear"
-        style="width: 800px; height: 500px"
-      ></div>
-    </div>
-  </section>
-  <script type="module">
-    import varietyChart from "../js/varietyChart.js";
-    varietyChart();
 
-    //select dog or cat chart
-    const dog = document.getElementById("dog");
-    const cat = document.getElementById("cat");
-    dog.addEventListener("click", (event) => {
-      document.getElementById("catVariety").setAttribute("class", "disappear");
-      document.getElementById("dogVariety").setAttribute("class", "");
+      <div class="diagram">
+        <div class="title">
+          <h1>是否混種</h1>
+          <div class="tab">
+            <a href="#" id="dog" class="kind">犬</a
+            ><a href="#" id="cat" class="kind">貓</a>
+          </div>
+        </div>
+        <div id="dogVariety" style="width: 800px; height: 500px"></div>
+        <div
+          id="catVariety"
+          class="disappear"
+          style="width: 800px; height: 500px"
+        ></div>
+      </div>
+    </section>
+    <script type="module">
+      import varietyChart from "../js/varietyChart.js";
       varietyChart();
-    });
-    cat.addEventListener("click", (event) => {
-      document.getElementById("catVariety").setAttribute("class", "");
-      document.getElementById("dogVariety").setAttribute("class", "disappear");
-      varietyChart();
-    });
 
-    //display chart by year selection
-    const year = document.getElementsByClassName("year-item");
-    Array.from(year).forEach((element) => {
-      element.addEventListener("click", (event) => {
-        document.getElementById("year").innerHTML = element.innerHTML;
+      //select dog or cat chart
+      const dog = document.getElementById("dog");
+      const cat = document.getElementById("cat");
+      dog.addEventListener("click", (event) => {
+        document
+          .getElementById("catVariety")
+          .setAttribute("class", "disappear");
+        document.getElementById("dogVariety").setAttribute("class", "");
         varietyChart();
       });
-    });
-  </script>
-</body>
+      cat.addEventListener("click", (event) => {
+        document.getElementById("catVariety").setAttribute("class", "");
+        document
+          .getElementById("dogVariety")
+          .setAttribute("class", "disappear");
+        varietyChart();
+      });
+
+      //display chart by year selection
+      const year = document.getElementsByClassName("year-item");
+      Array.from(year).forEach((element) => {
+        element.addEventListener("click", (event) => {
+          document.getElementById("year").innerHTML = element.innerHTML;
+          varietyChart();
+        });
+      });
+    </script>
+  </body>
 </html>
