@@ -14,9 +14,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 10rem;
-  width: 150%;
-  height: 90%;
+  padding-left: 5rem;
+  /* padding-top: 5rem; */
+  width: 40%;
+  height: 5%;
 }
 
 svg {
@@ -43,10 +44,6 @@ path:hover {
   margin-top: -5vh;
   color: white;
   font-size: 30px;
-}
-
-h1 {
-  font-size: min(10vw, 2em);
 }
 
 h1 span {
