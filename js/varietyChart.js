@@ -251,7 +251,7 @@ const varietyChart = () => {
           },
           series: [
             {
-              name: "",
+              name: "1",
               type: "pie",
               color: [
                 "#F9B132",
